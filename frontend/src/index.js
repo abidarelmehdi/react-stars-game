@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/css/main.css';
-import Button from "./components/Button";
+import Display from './components/Display';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Button label="Click Here" />
+    <Display />
   </React.StrictMode>,
   document.getElementById('root')
 );
