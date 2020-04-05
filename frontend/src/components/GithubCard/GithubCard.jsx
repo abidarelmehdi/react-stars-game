@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import AddUserButton from "./AddUserButton";
 import GithubList from "./GithubList";
 
 export default function GithubCard() {
-  const listUser = [
+  const [users, setUsers] = useState([
     {
       login: "abidar95",
       avatar_url: "https://avatars0.githubusercontent.com/u/8204941?v=4",
@@ -13,7 +13,11 @@ export default function GithubCard() {
       followers: 1,
       created_at: "2014-07-18T22:01:35Z",
     },
-  ];
+  ]);
+  const addUser = (user) => {
+    setUsers([...users, user]);
+  };
+
   return (
     <div className="mt-16 bg-white overflow-hidden shadow rounded-lg">
       <div className="-ml-4 -mt-2 px-4 py-5 border-b border-gray-200 sm:px-6 flex items-center justify-between flex-wrap sm:flex-no-wrap">
@@ -23,10 +27,10 @@ export default function GithubCard() {
           </h3>
         </div>
         <div className="ml-4 mt-2 flex-shrink-0">
-          <AddUserButton />
+          <AddUserButton onSubmit={addUser} />
         </div>
       </div>
-      <GithubList users={listUser} />
+      <GithubList users={users} />
     </div>
   );
 }
