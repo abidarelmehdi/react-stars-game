@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import GithubItem from "./components/GithubCard/GithubItem";
+import GithubList from "./components/GithubCard/GithubList";
 export class App extends Component {
   render() {
-    return <GithubItem />;
+    return <GithubList />;
   }
 }
 
