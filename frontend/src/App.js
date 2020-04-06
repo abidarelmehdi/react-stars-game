@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import GithubCard from "./components/GithubCard/GithubCard";
+import Game from "./components/Game/Game";
 export class App extends Component {
   render() {
-    return <GithubCard />;
+    return <Game />;
   }
 }
 
