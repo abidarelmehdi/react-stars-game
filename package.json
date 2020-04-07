@@ -1,5 +1,6 @@
 {
-  "name": "frontend",
+  "homepage": "http://abidarelmehdi.github.io/react-stars-game",
+  "name": "react-stars-game",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +24,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build:css": "postcss src/assets/css/tailwind.css -o src/assets/css/main.css",
-    "watch:css": "postcss src/assets/css/tailwind.css -o src/assets/css/main.css"
+    "watch:css": "postcss src/assets/css/tailwind.css -o src/assets/css/main.css",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,6 +45,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^9.7.5",
+    "gh-pages": "^2.2.0",
     "postcss-cli": "^7.1.0",
     "tailwindcss": "^1.2.0"
   }
