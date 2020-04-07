@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { starRange, random } from "./functions";
+import React from "react";
+import { range } from "./functions";
 
 export default function Stars({ stars }) {
-  return starRange(1, stars).map((star) => (
-    <div key={"star-" + star} className="inline-block px-3 py-2">
+  return range(1, stars).map((star) => (
+    <div key={"star-" + star} className="px-3 py-2">
       <svg
         fill="currentColor"
         viewBox="0 0 20 20"
