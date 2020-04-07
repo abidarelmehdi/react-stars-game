@@ -1,28 +1,20 @@
-import React, { useState, useEffect } from "react";
-import { random, range, sum, randomSumIn } from "./functions";
+import React, { useState } from "react";
+import { range, sum } from "./functions";
+import useGameState from "./GameHooks";
 import BtnNumber from "./BtnNumber";
 import Stars from "./Stars";
 import PlayAgain from "./PlayAgain";
 
 function Round({ startAgain }) {
-  const starsRandNum = random(1, 9);
   const numbers = 9;
-
-  const [stars, setStars] = useState(starsRandNum);
-  const [availableNumbers, setAvailableNumbers] = useState(range(1, numbers));
-  const [condidateNumbers, setCondidateNumbers] = useState([]);
-  const [timeLeft, setTimeLeft] = useState(10);
-
+  const {
+    stars,
+    availableNumbers,
+    condidateNumbers,
+    timeLeft,
+    setGameState,
+  } = useGameState(numbers);
   const condidatesAreWrong = sum(condidateNumbers) > stars;
-
-  useEffect(() => {
-    if (timeLeft > 0 && availableNumbers.length > 0) {
-      const timerId = setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
-      }, 1000);
-      return () => clearTimeout(timerId);
-    }
-  });
 
   const numberStatus = (number) => {
     if (!availableNumbers.includes(number)) {
@@ -45,17 +37,7 @@ function Round({ startAgain }) {
       currentStatus === "available"
         ? condidateNumbers.concat(number)
         : condidateNumbers.filter((cn) => cn !== number);
-
-    if (sum(newCondidateNumbers) !== stars) {
-      setCondidateNumbers(newCondidateNumbers);
-    } else {
-      const newAvailableNumbers = availableNumbers.filter(
-        (num) => !newCondidateNumbers.includes(num)
-      );
-      setStars(randomSumIn(newAvailableNumbers, 9));
-      setAvailableNumbers(newAvailableNumbers);
-      setCondidateNumbers([]);
-    }
+    setGameState(newCondidateNumbers);
   };
 
   return (
