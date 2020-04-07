@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-stars-game/precache-manifest.4c3789ce16187ae1f8c2a44c8980698b.js"
+  "/react-stars-game/precache-manifest.c276cf9663caca4bd746b51479e6cecc.js"
 );
 
 self.addEventListener('message', (event) => {
